@@ -14,6 +14,7 @@ jobs:
           VAR_1: var_1 from step
         run: |
           echo VAR_1: $VAR_1
+          echo VAR_1: ${{env.VAR_1}}
           echo VAR_2: $VAR_2
           echo VAR_3: $VAR_3
           echo GITHUB_REF: $GITHUB_REF
@@ -21,3 +22,4 @@ jobs:
           echo GITHUB_SHA: $GITHUB_SHA
           echo VAR_4: ${{vars.VAR_4}}
           echo SECRET_1: ${{secrets.SECRET_1}}
+          echo SECRET_2:
