@@ -1,12 +1,11 @@
 name: Mon premier workflow
 on: [push]
-env:
-  NAME_STEP: STEP One
 jobs:
-  say-hello:
+  my-job:
     runs-on: ubuntu-latest
     steps:
-      #     - name: $NAME_STEP
-      - name: ${{ env.NAME_STEP}}
-        run: |
-          echo NAME_STEP: $NAME_STEP
+      - run: echo ${{ 42 }}
+      # bien sur oco on récupère plustot en général des contexte ou des variables
+      # montrer des exemples concret
+      - run: echo main = top ? ${{ 'main' == 'top'}}
+      - run: echo la branche actuelle contient elle main ? ${{ contains(github.ref, 'main')}}
