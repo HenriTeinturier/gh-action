@@ -1,47 +1,13 @@
-# name: Mon premier workflow
-# on: [push]
-# jobs:
-#   deploy:
-#     if: github.ref == 'refs/heads/main'
-#     runs-on: ubuntu-latest
-#     steps:
-#       - run: echo deploy in prod
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
-      - dev
+name: Mon premier workflow
+on: [push]
 
 jobs:
-  build-and-test:
-    name: Build & Test
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - run: echo je lance les tests
-      - run: echo je provoque une erreur
-      - run: exit 1
-      # - name: Checkout repository
-      #   uses: actions/checkout@v4
-
-      # - name: Install dependencies
-      #   run: npm install
-
-      # - name: Run tests
-      #   run: npm test
+      - run: echo build
 
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
-    needs: build-and-test # Attend que "build-and-test" réussisse avant d'exécuter ce job
-
     steps:
-      - name: Deploy to Development
-        if: github.ref == 'refs/heads/dev'
-        run: echo "🚀 Deploying to DEVELOPMENT environment"
-
-      - name: Deploy to Production
-        if: github.ref == 'refs/heads/main'
-        run: echo "🚀 Deploying to PRODUCTION environment"
+      - run: echo deploy in prod
