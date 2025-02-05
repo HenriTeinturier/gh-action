@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - id: step1
+      - name: step1
         run: |
           echo github_env: $GITHUB_ENV
           echo FROM_STEP_1=value_step_1 >> $GITHUB_ENV
