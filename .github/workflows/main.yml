@@ -3,10 +3,17 @@ on:
   push:
     branches:
       - main
-      - feature
+    # - feature
+    # branches-ignore:
+    #   - main
+    paths:
+      - "!docs/**"
+      - "**.png"
+    # paths-ignore:
+    #   - "docs/**"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo JOB DONE
+      - run: echo traitement image
