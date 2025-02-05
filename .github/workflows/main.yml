@@ -5,6 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "::notice::Un message d'info"
-      - run: echo "::warning::Un warning"
-      - run: echo "::error::Une erreur"
+      - run: |
+          echo "::notice::Un message d'info"
+          echo "::warning::Un warning"
+          echo "::error::Une erreur"
