@@ -10,7 +10,7 @@ jobs:
       - name: Lire le fruit
         id: lire_fruit
         run: |
-          read fruit < fruit.txt
+          fruit=$(cat fruit.txt)
           echo "fruit=$fruit" >> "$GITHUB_OUTPUT"
 
       - name: Vérification du fruit
