@@ -4,18 +4,16 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      FROM_BUILD: ${{ steps.step1.outputs.FROM_STEP_1}}
     steps:
       - id: step1
         run: |
           echo GITHUB_OUTPUT: $GITHUB_OUTPUT
           echo FROM_STEP_1=value_step_1 >> $GITHUB_OUTPUT
-      - id: step2
-        run: |
-          echo FROM outputs: ${{ steps.step1.outputs }}
-          echo FROM outputs.FROM_STEP_1:  ${{ steps.step1.outputs.FROM_STEP_1 }}
 
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - run: echo deploy in prod
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo FROM_BUILD ${{ needs.build.outputs.FROM_BUILD }}
