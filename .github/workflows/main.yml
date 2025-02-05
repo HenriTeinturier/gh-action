@@ -7,13 +7,12 @@ jobs:
     steps:
       - name: step1
         run: |
-          echo github_env: $GITHUB_ENV
-          echo FROM_STEP_1=value_step_1 >> $GITHUB_ENV
+          echo github_env: $GITHUB_OUTPUTS
+          echo FROM_STEP_1=value_step_1 >> $GITHUB_OUTPUT
       - id: step2
         run: |
-          echo github_env step2: $GITHUB_ENV
-          echo FROM_STEP_1: $FROM_STEP_1
-          echo FROM env:  ${{ env.FROM_STEP_1 }}
+          echo FROM outputs: ${{ steps.step1.outputs }}
+          echo FROM outputs.FROM_STEP_1:  ${{ steps.step1.outputs.FROM_STEP_1 }}
 
   # deploy:
   #   runs-on: ubuntu-latest
