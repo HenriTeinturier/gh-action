@@ -5,10 +5,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo build
+      - id: step1
+        run: |
+          echo github_env: $GITHUB_ENV
+          echo FROM_STEP_1=value_step_1 >> $GITHUB_ENV
+      - id: step2
+        run: |
+          echo github_env step2: $GITHUB_ENV
+          echo FROM_STEP_1: $FROM_STEP_1
+          echo FROM env:  ${{ env.FROM_STEP_1 }}
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - run: echo deploy in prod
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - run: echo deploy in prod
