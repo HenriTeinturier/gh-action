@@ -5,9 +5,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: step1
+      - id: step1
         run: |
-          echo github_env: $GITHUB_OUTPUTS
+          echo GITHUB_OUTPUT: $GITHUB_OUTPUT
           echo FROM_STEP_1=value_step_1 >> $GITHUB_OUTPUT
       - id: step2
         run: |
