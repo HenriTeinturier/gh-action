@@ -2,13 +2,9 @@ name: Mon premier workflow
 on: push
 
 jobs:
-  check-fruit:
+  my-job:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo ::group::mon groupe
-          echo 1
-          echo 2
-          echo 3
-          echo 4
-          echo ::endgroup::
+      - run: echo 123
+      - run: echo ::debug::je suis un message de debug
+      - run: echo 456
