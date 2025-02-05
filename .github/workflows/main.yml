@@ -1,13 +1,19 @@
-name: Mon premier workflow
+name: Vérification du fruit
 on: push
 
 jobs:
-  build:
+  check-fruit:
     runs-on: ubuntu-latest
     steps:
-      - id: set_fruit
-        run: echo fruit=pomme >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
 
-      - id: check_fruit
-        run: echo ::error::fruit is ${{ steps.set_fruit.outputs.fruit }} but should be poire
-        if: steps.set_fruit.outputs.fruit != 'poire'
+      - name: Lire le fruit
+        id: lire_fruit
+        run: |
+          read fruit < fruit.txt
+          echo "fruit=$fruit" >> "$GITHUB_OUTPUT"
+
+      - name: Vérification du fruit
+        if: steps.lire_fruit.outputs.fruit != 'poire'
+        run: |
+          echo "::error file=fruit.txt,line=1::Le fruit n'est pas correct, attendu: poire"
