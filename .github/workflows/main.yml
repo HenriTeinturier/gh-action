@@ -9,8 +9,5 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         version: [18, 20, 22]
-        exclude:
-          - os: windows-latest
-            version: 18
     steps:
       - run: echo "Running on ${{ matrix.os }} with node ${{ matrix.version }}"
