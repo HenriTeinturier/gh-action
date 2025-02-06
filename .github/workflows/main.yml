@@ -6,10 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         include:
           - cloud: ovh
             endpoint: url1
+            os: ubuntu-latest
           - cloud: aws
             endpoint: url2
+            os: windows-latest
     steps:
-      - run: echo "Running on ${{ matrix.cloud }} with endpoint ${{ matrix.endpoint }}"
+      - run: echo "Running on ${{ matrix.cloud }} with endpoint ${{ matrix.endpoint }} in ${{ matrix.os }}"
