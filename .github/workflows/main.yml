@@ -4,10 +4,5 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 2
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        version: [18, 20, 22]
     steps:
-      - run: echo "Running on ${{ matrix.os }} with node ${{ matrix.version }}"
+      - run: echo Hello world!
