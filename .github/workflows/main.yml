@@ -14,6 +14,7 @@ jobs:
         with:
           key: ${{ runner.os}} - node-${{ hashFiles('**/package-lock.json') }}
           path: ./vite-project/.npm
-      - name: install dependencies
-        run: npm ci --cache .npm
-        working-directory: ./vite-project
+      - run: ls -la ./vite-project/.npm
+      # - name: install dependencies
+      #   run: npm ci --cache .npm
+      #   working-directory: ./vite-project
