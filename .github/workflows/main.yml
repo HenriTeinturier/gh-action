@@ -1,12 +1,10 @@
-name: Mon premier workflow
+name: Test Docker
 on: push
 
 jobs:
-  deploy-production:
+  test-docker:
     runs-on: ubuntu-latest
-    environment:
-      name: production
-      url: https://mon-application.fr
     steps:
       - run: |
-          echo Deploy to production
+          ls -la
+          npm -v
