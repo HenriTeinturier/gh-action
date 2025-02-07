@@ -9,4 +9,4 @@ jobs:
     steps:
       - run: |
           ls -la
-          npm -v
+          node -v
