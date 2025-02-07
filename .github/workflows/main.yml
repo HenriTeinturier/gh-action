@@ -4,7 +4,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    concurrency: wait-for-previous
+    concurrency:
+      group: wait-for-previous
+      cancel-in-progress: true
     steps:
       - run: |
           echo Very long step
