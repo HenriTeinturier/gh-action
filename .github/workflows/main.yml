@@ -4,8 +4,10 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    concurrency: wait-for-previous
     steps:
       - run: |
           echo Very long step
+
           sleep 100
           echo done !
