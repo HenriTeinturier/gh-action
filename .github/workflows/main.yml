@@ -5,6 +5,7 @@ jobs:
   test-docker:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v4
       - run: |
           ls -la
           npm -v
