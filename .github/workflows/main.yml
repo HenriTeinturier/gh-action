@@ -4,10 +4,13 @@ on: push
 jobs:
   test-docker:
     runs-on: ubuntu-latest
-    container:
-      image: node:16
+    services:
+      redis:
+        image: redis:latest
+        ports:
+          - 6379:6379
     steps:
-      - uses: actions/checkout@v4
-      - run: |
-          ls -la
-          node -v
+      - name: Installer Redis CLI
+        run: sudo apt update && sudo apt install -y redis-tools
+      - name: tester la connexion à Redis
+        run: redis-cli -h localhost -p 6379 ping
