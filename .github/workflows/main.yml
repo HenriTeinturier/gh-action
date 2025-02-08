@@ -7,10 +7,10 @@ jobs:
     services:
       redis:
         image: redis:latest
-        ports:
-          - 6379:6379
+    container:
+      image: node:18
     steps:
       - name: Installer Redis CLI
-        run: sudo apt update && sudo apt install -y redis-tools
+        run: apt update && apt install -y redis-tools
       - name: tester la connexion à Redis
-        run: redis-cli -h localhost -p 6379 ping
+        run: redis-cli -h redis ping
