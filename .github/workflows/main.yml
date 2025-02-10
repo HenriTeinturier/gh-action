@@ -1,16 +1,12 @@
-name: Test Docker
+name: Test Artifact
 on: push
 
 jobs:
-  test-docker:
+  test-artifacts:
     runs-on: ubuntu-latest
-    services:
-      redis:
-        image: redis:latest
-    container:
-      image: node:18
     steps:
-      - name: Installer Redis CLI
-        run: apt update && apt install -y redis-tools
-      - name: tester la connexion à Redis
-        run: redis-cli -h redis ping
+      - run: echo 123 > text.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: myfirstartifact
+          path: ./text.txt
