@@ -41,10 +41,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
-          path: ./build
+          path: ./vite-project/dist
       - name: Deploy to github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: ./build
+          folder: ./vite-project/dist
           clean: true
