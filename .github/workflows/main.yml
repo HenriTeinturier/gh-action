@@ -7,7 +7,6 @@ jobs:
     steps:
       - run: echo $GITHUB_STEP_SUMMARY
       - run: |
-          echo "# Résumé de notre Github actions" >> $GITHUB_STEP_SUMMARY
           echo "## Préparation au décollage" >> $GITHUB_STEP_SUMMARY
           echo "décollage immédiat :rocket:" >> $GITHUB_STEP_SUMMARY
           echo "- 3" >> $GITHUB_STEP_SUMMARY
