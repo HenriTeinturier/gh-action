@@ -1,50 +1,16 @@
-name: Test Artifact
+name: Résumé Github
 on: push
-
-permissions:
-  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-      - name: Install nodejs
-        uses: actions/setup-node@v4
-      - name: init cache
-
-        uses: actions/cache@v4
-        with:
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          path: ./vite-project/.npm
-      - name: Install dependencies
-        working-directory: ./vite-project
-        run: npm ci --cache .npm
-      - name: Build application
-        working-directory: ./vite-project
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: ./vite-project/dist
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      contents: write
-    steps:
-      - name: checkout repository
-        uses: actions/checkout@v4
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: ./build
-      - name: Deploy to github Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: ./build
-          clean: true
+      - run: echo $GITHUB_STEP_SUMMARY
+      - run: |
+          echo "# Résumé de notre Github actions" >> $GITHUB_STEP_SUMMARY
+          echo "## Préparation au décollage" >> $GITHUB_STEP_SUMMARY
+          echo "décollage immédiat :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "- 3" >> $GITHUB_STEP_SUMMARY
+          echo "- 2" >> $GITHUB_STEP_SUMMARY
+          echo "- 1" >> $GITHUB_STEP_SUMMARY
+          echo "- décollage réussi" >> $GITHUB_STEP_SUMMARY
