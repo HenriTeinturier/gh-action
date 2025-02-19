@@ -1,15 +1,10 @@
-name: Résumé Github
+name: Injection Script
 on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $GITHUB_STEP_SUMMARY
       - run: |
-          echo "## Préparation au décollage" >> $GITHUB_STEP_SUMMARY
-          echo "décollage immédiat :rocket:" >> $GITHUB_STEP_SUMMARY
-          echo "- 3" >> $GITHUB_STEP_SUMMARY
-          echo "- 2" >> $GITHUB_STEP_SUMMARY
-          echo "- 1" >> $GITHUB_STEP_SUMMARY
-          echo "- décollage réussi" >> $GITHUB_STEP_SUMMARY
+          titre={{ github.event.head_commit.message }}
+          echo Hello world !
